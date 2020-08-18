@@ -2,6 +2,7 @@
   "name": "rbc",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://freelancedeveloper.site/projects/react/cliniknote/build/",
   "dependencies": {
     "moment": "2.26.0",
     "node-sass": "^4.14.1",
