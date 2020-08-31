@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
-import './Header.scss'
-import plus from "../../assets/plus.svg"
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import plus from "../../assets/plus.svg";
 // import Modal from "react-modal"
-import ModalAppointment from "../ModalAppointment/ModalAppointment"
+import ModalAppointment from "../ModalAppointment/ModalAppointment";
+import { SET_OPEN_MODAL_APPOINTMENT } from "../Store/actions";
+import { useDispatch } from 'react-redux';
+import './Header.scss';
 
 const Home = () => {
-const [isOpenModalAppointment, setIsOpenModalAppointment] = useState(false)
+    const dispatch = useDispatch();
+    const isOpenModalAppointment = useSelector(state => state.isOpenModalAppointment);
 
     return (
         <section className="Header">
             <div className="Header-Cont"> 
                 <div className="Header-Cont-ButtonS">
-                    <button onClick={() => setIsOpenModalAppointment(true)}>
+                    {/* <button onClick={() => setIsOpenModalAppointment(true)}> */}
+                    <button onClick={() => dispatch ({type: SET_OPEN_MODAL_APPOINTMENT, isOpenModalAppointment: true}) } > 
                         <img src={plus}/>
                         Appointment
                     </button>
                     
                    {isOpenModalAppointment && (
-                       <ModalAppointment setIsOpenModalAppointment={setIsOpenModalAppointment}/>
+                       <ModalAppointment/>
                    )}
                     <button >
                         <img src={plus}/>

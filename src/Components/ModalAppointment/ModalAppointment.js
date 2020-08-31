@@ -1,15 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import "./ModalAppointment.scss";
 import close from "../../assets/close.png";
+import { SET_OPEN_MODAL_APPOINTMENT } from "../Store/actions";
 
-const ModalAppointment = ({ setIsOpenModalAppointment }) => {
+const ModalAppointment = () => {
+    const dispatch = useDispatch();
 
     return (
         <section className="ModalAppointment">
             <div className="ModalAppointment-Cont">
                 <div className="ModalAppointment-Cont-Flex">
                     <h2 >New Appointment</h2>
-                    <img  src={close} onClick={() => setIsOpenModalAppointment(false)}/>
+                    <img  src={close} onClick={() => dispatch({ type: SET_OPEN_MODAL_APPOINTMENT, isOpenModalAppointment: false })}/>
                 </div>
                 <div className="ModalAppointment-Cont-MainText">
                     <h1>Appointment Details</h1>
