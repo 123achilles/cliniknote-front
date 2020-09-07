@@ -1,0 +1,164 @@
+.ModalAppointment{
+    // width: 1000px;
+    // height: 900px;
+    // position: absolute;
+    // background-color: #fff;
+    // z-index: 5;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // top: 0;
+    min-height: 900px;
+    top: 40px;
+    left: 500px;
+    right: 500px;
+    bottom: 10px;
+    position: absolute;
+    z-index: 5;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    /* overflow: auto; */
+    border-radius: 4px;
+    outline: none;
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    &-Cont{
+        &-Flex{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #3f51b5;
+            margin: 0;
+            padding: 10px 30px;
+            border-bottom: 4px solid #c0e6f1;
+            img{
+                width: 20px;
+                height: 20px;
+                color: #12482a;
+                cursor: pointer;
+            }
+        }
+        h2{
+            color: #FFF;
+            font-size: 20px;
+            font-weight: 300;
+ 
+        }
+        &-MainText {
+            padding: 0 30px 0 30px;
+            &-CustomerDetailsFlex{
+                justify-content: space-between;
+                display: flex;
+                &-Width50RightSide{
+                    width: 50%;
+                    margin-left: 20px;
+                    input{
+                        border: none;
+                        border-bottom: 1px solid;
+                        font-size: 16px;
+                        /* padding: 0 0 0 0; */
+                        width: 100%;
+                        padding: 0 0 7px 0;
+                        outline: none;
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;   font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                    }
+                    h5{
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                        font-size: 13px;
+                    }
+                    textarea{
+                        border: none;
+                        border-bottom: 1px solid;
+                        font-size: 16px;
+                        /* padding: 0 0 0 0; */
+                        width: 100%;
+                        outline: none ;
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                        margin-top: -16px;
+
+                    }
+                }
+                &-Width50{
+                    width: 50%;
+                    input{
+                        border: none;
+                        border-bottom: 1px solid;
+                        font-size: 16px;
+                        /* padding: 0 0 0 0; */
+                        width: 100%;
+                        padding: 0 0 7px 0;
+                        outline: none;
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;   font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                    }
+                    h5{
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                        font-size: 13px;
+                    }
+                }
+            }
+            &-AppointmentDetailsFlex{
+                display: flex;
+                justify-content: space-between;
+                &-Width50{
+                    width: 50%;
+                    select{
+                        border: none;
+                        border-bottom: 1px solid;
+                        font-size: 16px;
+                        /* padding: 0 0 0 0; */
+                        width: 100%;
+                        padding: 0 0 7px 0;
+                        outline: none;
+
+
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                    }
+                    h5{
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                        font-size: 13px;
+                    }
+                    textarea{
+                        border: none;
+                        border-bottom: 1px solid;
+                        font-size: 16px;
+                        /* padding: 0 0 0 0; */
+                        width: 100%;
+                        outline: none ;
+                        font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        color: #666666;
+                        font-weight: 400;
+                        margin-top: -16px;
+
+                    }
+                }
+            }
+            h1{
+                font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 20px;
+                line-height: 1.846;
+                color: #666666;
+                font-weight: 400;
+                border: 0;
+                border-bottom: 1px solid #e5e5e5;
+
+            }
+        }
+    }
+} 

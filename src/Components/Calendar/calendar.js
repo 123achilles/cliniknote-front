@@ -13,7 +13,9 @@ class Calendar extends SampleBase {
         super(...arguments);
         this.state = {
             finaldata:[]
+
         }
+
     }
 
     onEventRendered(args) {
@@ -29,25 +31,38 @@ class Calendar extends SampleBase {
                 break;
         }
     }
+ 
+
 
     getId(){
         Axios.get('http://freelancedeveloper.site/projects/laravel/cliniknote/public/api/appointments?week=true')
         .then(response => {
+            // console.log(response,'response')
             let arr=[]
             let forname =response.data.appointments
             let startdata=forname.map((el)=>(el.startDateTime))
             let enddata=forname.map((el)=>(el.endDateTime))
             let forpatient =response.data.appointments.map((el)=>(el.id))
             let namedata= forname.map((elem)=>(elem.patient.firstName + ' ' + elem.patient.lastName))
-            for(let i=0, j=0, k=0 ,l=0 ; l<namedata.length, k < forpatient.length, j< enddata.length, i<startdata.length; i++ , j++ , k++,l++) {
+            let patientemail=forname.map((elem)=>(elem.patient.email))
+            let note = forname.map((el)=>(el.patient.notes.map((elem)=>elem.note)))
+            let noteCreateTime = forname.map((el)=>(el.patient.notes.map((elem)=>(elem.created_at).slice(2,19))))
+            for(let i=0, j=0, k=0 , l=0, m=0, n=0, p=0 ; p<noteCreateTime.length, n < note.length, m<patientemail.length, l<namedata.length, k < forpatient.length, j < enddata.length, i <startdata.length; i++ , j++ , k++, l++ , m++, n++, p++) {
                    arr.push({
                        StartTime: startdata[i],
                        EndTime:enddata[j],
                        Id:forpatient[k],
-                       Subject:namedata[l]
+                       Subject:namedata[l],
+                       Email:patientemail[m],
+                       Note: note[n],
+                       NoteCreateTime:noteCreateTime[p]
+
                    });
+
                }
             this.setState({ finaldata: arr})
+            console.log(arr, "arr")
+
         })
 
 
@@ -72,9 +87,15 @@ class Calendar extends SampleBase {
             <tr><td className="e-textlabel">To</td><td style={{ colspan: '4' }}>
                 <DateTimePickerComponent id="EndTime" format='dd/MM/yy hh:mm a' data-name="EndTime" value={new Date(props.endTime || props.EndTime)} className="e-field"></DateTimePickerComponent>
             </td></tr>
-            <tr><td className="e-textlabel">Reason</td><td style={{ colspan: '4' }}>
-                <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50} style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
-            </td></tr></tbody></table> : <div></div>);
+            <tr>
+                <td className="e-textlabel">Note</td><td style={{ colspan: '4' }}>
+                    <input id="Note" className="e-field e-input" placeholder="Note" type="text" name="Note" style={{ width: '100%' }} />
+                </td>
+                <td className="e-textlabel"></td><td style={{ colspan: '4' }}>
+                    <input id="NoteCreateTime" className="e-field e-input" type="text" name="NoteCreateTime" style={{ width: '100%' }} />
+                </td>
+            </tr>
+            </tbody></table> : <div></div>);
     }
 
 
@@ -83,56 +104,51 @@ class Calendar extends SampleBase {
 
     onActionBegin(args) {
 
-console.log(args)
-        if (args.addedRecords && args.addedRecords.length > 0) {
+// console.log(args)
+        // if (args.addedRecords && args.addedRecords.length > 0) {
 
 
-            Axios.post('http://localhost:8080/api/calendarEvent/addEvents', args.addedRecords[0])
-                .then(res =>{
-                     console.log(res.data, 'data')
-                     this.getId()
-                    })
-                .catch(err => {
-                    console.log(err);
+        //     Axios.post('http://localhost:8080/api/calendarEvent/addEvents', args.addedRecords[0])
+        //         .then(res =>{
+        //              console.log(res.data, 'data')
+        //              this.getId()
+        //             })
+        //         .catch(err => {
+        //             console.log(err);
 
-                })
+        //         })
 
-        }
+        // }
 
-        if (args.changedRecords && args.changedRecords.length > 0) {
-            console.log(args, 'args.changedRecords')
-            Axios.put(`http://localhost:8080/api/calendarEvent/addEvents/update/${args.changedRecords[0]['_id']}`, args.changedRecords[0])
-                .then(res => {
-
-
-                })
-                .catch(err => {
-
-                })
-        }
+        // if (args.changedRecords && args.changedRecords.length > 0) {
+        //     console.log(args, 'args.changedRecords')
+        //     Axios.put(`http://localhost:8080/api/calendarEvent/addEvents/update/${args.changedRecords[0]['_id']}`, args.changedRecords[0])
+        //         .then(res => {
 
 
-        if (args.deletedRecords && args.deletedRecords.length > 0) {
-            Axios.delete(`http://localhost:8080/api/calendarEvent/addEvents/delete/${args.deletedRecords[0]['_id']}`)
-                .then(res => {
+        //         })
+        //         .catch(err => {
+
+        //         })
+        // }
 
 
-                })
+        // if (args.deletedRecords && args.deletedRecords.length > 0) {
+        //     Axios.delete(`http://localhost:8080/api/calendarEvent/addEvents/delete/${args.deletedRecords[0]['_id']}`)
+        //         .then(res => {
 
-        }
+
+        //         })
+
+        // }
 
 
 
 
     }
 
-
-
-
-
     componentDidMount() {
         this.getId()
-
 
     }
 
